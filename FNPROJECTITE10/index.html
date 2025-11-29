@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <!-- SIGN UP -->
+    <div class="container" id="signup" style="display: none;">
+        <h1 class="form-title">Create Account</h1>
+        <form id="signupForm">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="fName" placeholder="First Name" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="lName" placeholder="Last Name" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="emailSignUp" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="passwordSignUp" placeholder="Password" required>
+            </div>
+
+            <input type="submit" class="btn" value="Sign Up">
+        </form>
+
+        <p class="or">──── or ────</p>
+        <div class="icons">
+            <i class="fab fa-google"></i>
+            <i class="fab fa-facebook"></i>
+        </div>
+
+        <div class="links">
+            <p>Already have an account?</p>
+            <button id="signInButton">Sign In</button>
+        </div>
+    </div>
+
+    <!-- SIGN IN -->
+    <div class="container" id="signIn">
+        <h1 class="form-title">Login Account</h1>
+        <form id="signInForm">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="emailSignIn" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="passwordSignIn" placeholder="Password" required>
+            </div>
+
+            <p class="recover"><a href="#">Forgot Password?</a></p>
+
+            <input type="submit" class="btn" value="Sign In">
+        </form>
+
+        <p class="or">──── or ────</p>
+        <div class="icons">
+            <i class="fab fa-google"></i>
+            <i class="fab fa-facebook"></i>
+        </div>
+
+        <div class="links">
+            <p>Don’t have an account?</p>
+            <button id="signUpButton">Sign Up</button>
+        </div>
+    </div>
+    <!-- INTERNAL CSS (merged from style.css) -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('building1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            background: rgba(251, 251, 251, 0.455);
+            padding: 2rem 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(13, 13, 13, 0.1);
+            width: 360px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        h1.form-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        /* Input groups */
+        .input-group {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+
+        .input-group i {
+            position: absolute;
+            top: 13px;
+            left: 10px;
+            color: #999;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #2575fc;
+            outline: none;
+        }
+
+        /* Buttons */
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        .btn:hover {
+            background: #1a5ed8;
+        }
+
+        /* Divider */
+        .or {
+            text-align: center;
+            margin: 1rem 0;
+            color: #999;
+        }
+
+        /* Social icons */
+        .icons {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .icons i {
+            font-size: 20px;
+            margin: 0 10px;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.5s;
+        }
+
+        .icons i:hover {
+            color: #2575fc;
+        }
+
+        /* Links */
+        .links {
+            text-align: center;
+        }
+
+        .links button {
+            background: none;
+            border: none;
+            color: #2575fc;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .links button:hover {
+            color: #1a5ed8;
+        }
+
+        .recover {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        .recover a {
+            text-decoration: none;
+            color: #2575fc;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+
+    <!-- INTERNAL JS (merged from script.js) -->
+    <script>
+        // Select elements
+        const signUpButton = document.getElementById('signUpButton');
+        const signInButton = document.getElementById('signInButton');
+        const signUpFormContainer = document.getElementById('signup');
+        const signInFormContainer = document.getElementById('signIn');
+
+        // Toggle between sign in / sign up
+        signUpButton.addEventListener('click', () => {
+            signInFormContainer.style.display = 'none';
+            signUpFormContainer.style.display = 'block';
+        });
+
+        signInButton.addEventListener('click', () => {
+            signUpFormContainer.style.display = 'none';
+            signInFormContainer.style.display = 'block';
+        });
+
+        // Sign up logic
+        const signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const fName = document.getElementById('fName').value.trim();
+            const lName = document.getElementById('lName').value.trim();
+            const email = document.getElementById('emailSignUp').value.trim();
+            const password = document.getElementById('passwordSignUp').value;
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Check if email exists
+            if (users.some(user => user.email === email)) {
+                alert('⚠️ Email already registered!');
+                return;
+            }
+
+            users.push({ fName, lName, email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('✅ Registration successful! You can now sign in.');
+            signupForm.reset();
+            signUpFormContainer.style.display = 'none';
+            signInFormContainer.style.display = 'block';
+        });
+
+        const signInForm = document.getElementById('signInForm');
+        signInForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('emailSignIn').value.trim();
+            const password = document.getElementById('passwordSignIn').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                // Successful login
+                window.location.href = "home.html";
+            } else {
+                alert('❌ Invalid email or password!');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
